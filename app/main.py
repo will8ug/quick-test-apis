@@ -7,7 +7,6 @@ app = FastAPI()
 def ping():
     return Response(content="PONG from quick-test-apis", media_type="text/plain")
 
-
 @app.get("/nginx-502")
 def nginx_502():
     html_content = """<html>
@@ -19,3 +18,7 @@ def nginx_502():
 </html>"""
     return Response(content=html_content, media_type="text/html", status_code=502)
 
+@app.get("/raw-json-simple")
+def raw_json_simple():
+    raw_json = """{"status": "ok", "content": "This is a json with no pretty-formatting"}"""
+    return Response(content=raw_json, media_type="application/json")
