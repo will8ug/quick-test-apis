@@ -18,6 +18,21 @@ def nginx_502():
 </html>"""
     return Response(content=html_content, media_type="text/html", status_code=502)
 
+@app.get("/nginx-503-crlf")
+def nginx_503_crlf():
+    html_content = b"\r\n".join(
+        [
+            b"<html>",
+            b"<head><title>503 Service Temporarily Unavailable</title></head>",
+            b"<body>",
+            b"<center><h1>503 Service Temporarily Unavailable</h1></center>",
+            b"<hr><center>nginx</center>",
+            b"</body>",
+            b"</html>",
+        ]
+    )
+    return Response(content=html_content, status_code=503, headers={"Content-Type": "text/html"})
+
 @app.get("/raw-json-simple")
 def raw_json_simple():
     raw_json = """{"status": "ok", "content": "This is a json with no pretty-formatting"}"""
