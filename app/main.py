@@ -18,6 +18,18 @@ def nginx_502():
 </html>"""
     return Response(content=html_content, media_type="text/html", status_code=502)
 
+@app.get("/nginx-400")
+def nginx_400():
+    html_content = """<html>
+<head><title>400 Bad Request</title></head>
+<body>
+<center><h1>400 Bad Request</h1></center>
+<hr><center>nginx</center>
+</body>
+</html>"""
+    return Response(content=html_content, media_type="text/html", status_code=400)
+
+
 @app.get("/nginx-503-crlf")
 def nginx_503_crlf():
     html_content = b"\r\n".join(
