@@ -9,6 +9,7 @@ wheels/
 # Virtual environments
 .venv
 .env
+certs/
 
 .idea/
 .vscode/
